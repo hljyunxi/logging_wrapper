@@ -6,7 +6,7 @@ import time
 import re
 
 REGEX_SPECIAL_CHARS = r'([\.\*\+\?\|\(\)\{\}\[\]])'
-REGEX_LOG_FORMAT_VARIABLE = r'\$([a-z0-9\_]+)'
+REGEX_LOG_FORMAT_VARIABLE = r'%([a-z0-9\_]+)[dsf]'
 
 def tailf(file_name):
     """\brief implement tail -f
