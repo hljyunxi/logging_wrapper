@@ -35,5 +35,3 @@ def check_is_writeable(path):
         raise RuntimeError("Error: '%s' isn't writable [%r]" % (path, e))
     f.close()
 
-def choose_one():
-    pass
