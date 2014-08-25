@@ -75,3 +75,4 @@ if __name__ == "__main__":
     from config import logging_config
     logger = Logger(logging_config)
     logger.reopen_files()
+    print logger.now()
