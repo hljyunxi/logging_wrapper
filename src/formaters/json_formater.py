@@ -42,7 +42,7 @@ class JsonFormater(logging.formater):
         if not hasattr(self, '_required_fields'):
             standard_formaters = re.compile(r'\(.+?\)', re.IGNORECASE)
             self._required_fields = standard_formaters.findall(self._fmt)
-            
+
         return self._required_fields
 
     @property
@@ -74,7 +74,7 @@ class JsonFormater(logging.formater):
 
         log_record.update(extras)
         self.merge_record_extra(log_record, record)
-        
+
         return json.dumps(log_record, cls=self.json_encoder)
 
 
@@ -96,5 +96,5 @@ class JsonStringFormater(JsonFormater):
 
         log_record.update(extras)
         self.merge_record_extra(log_record, record)
-        
+
         return self._fmt % log_record

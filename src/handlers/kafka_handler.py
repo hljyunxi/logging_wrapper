@@ -31,4 +31,4 @@ class KafkaHandler(logging.Handler):
             response = self.producer.send_messages(self.topic,\
                     self.format(record))
         except:
-            pass
+            raise
