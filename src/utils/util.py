@@ -8,6 +8,11 @@ import socket
 import sys
 import inspect
 
+weekdayname = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+monthname = [None,
+             'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
 def close_on_exec(fd):
     flags = fcntl.fcntl(fd, fcntl.F_GETFD)
     flags |= fcntl.FD_CLOEXEC
