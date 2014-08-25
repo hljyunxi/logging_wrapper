@@ -9,6 +9,7 @@ import traceback
 import threading
 
 from logging.config import fileConfig
+from utils import util
 
 
 CONFIG_DEFAULTS = dict(
@@ -58,8 +59,6 @@ class Logger(object):
     }
 
     def __init__(self, cfg):
-        self.error_handlers = []
-        self.access_handlers = []
         self.cfg = cfg
         self.setup(cfg)
 
@@ -101,3 +100,9 @@ class Logger(object):
                             util.close_on_exec(handler.stream.fileno())
                     finally:
                         handler.release()
+
+if __name__ == "__main__":
+    from config import logging_config
+    logger = Logger(logging_config)
+    logger.reopen_files()
+

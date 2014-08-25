@@ -32,3 +32,4 @@ class KafkaHandler(logging.Handler):
                     self.format(record))
         except:
             raise
+
