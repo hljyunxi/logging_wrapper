@@ -8,10 +8,13 @@ import re
 REGEX_SPECIAL_CHARS = r'([\.\*\+\?\|\(\)\{\}\[\]])'
 REGEX_LOG_FORMAT_VARIABLE = r'%([a-z0-9\_]+)[dsf]'
 
-def tailf(file_name):
+def tailf(file_name, seek_to_end=True):
     """\brief implement tail -f
     """
     with open(file_name) as f:
+        if seek_to_end:
+            f.seek(0, 2)
+
         while True:
             line = f.readline()
             if not line:
@@ -31,9 +34,9 @@ def extract_variables(log_format):
         yield match
 
 
-def parse_file(file_name, log_format):
+def parse_file(file_name, log_format, seek_to_end=True):
     pattern = build_pattern(log_format)
-    for i in tailf(file_name):
+    for i in tailf(file_name, seek_to_end):
         match_obj = pattern.search(i)
         if match_obj:
             yield match_obj.groupdict()
